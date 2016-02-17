@@ -6,12 +6,18 @@ import java.util.List;
 
 import nlp.lm.BigramModel.ModelType;
 
+/**
+ * A simple variant of Bigram Model which combines a forward and backward 
+ * Bigram Model.
+ */
 public class BidirectionalBigramModel {
 
 	public BidirectionalBigramModel() {
 		fwdModel = new BigramModel(ModelType.FORWARD);
 		bwdModel = new BigramModel(ModelType.BACKWARD);
 	}
+	
+	public enum TestType { ALL, SHORT, LONG };
 
 	// Train bi-directional model on passed sentences.
 	public void train(List<List<String>> sentences) {
@@ -19,10 +25,18 @@ public class BidirectionalBigramModel {
 		bwdModel.train(sentences);
 	}
 
-	public void test(List<List<String>> sentences) {
+	public void test(List<List<String>> sentences, TestType testType) {
 		double totalLogProb = 0;
 		double totalNumTokens = 0;
+		int kSentenceThreshold = 5;
 		for (List<String> sentence : sentences) {
+			if ((testType == TestType.SHORT && 
+					sentence.size() > kSentenceThreshold) || 
+				(testType == TestType.LONG && 
+					sentence.size() <= kSentenceThreshold)) {
+				// Ignore short/long sentences depending on test type.
+				continue;
+			} 
 			totalNumTokens += sentence.size();
 			double sentenceLogProb = sentenceLogProb(sentence);
 			// System.out.println(sentenceLogProb + " : " + sentence);
@@ -94,10 +108,10 @@ public class BidirectionalBigramModel {
 		System.out.println("Training...");
 		model.train(trainSentences);
 		// Test on training data using test and test2
-		model.test(trainSentences);
+		model.test(trainSentences, TestType.ALL);
 		System.out.println("Testing...");
 		// Test on test data using test and test2
-		model.test(testSentences);
+		model.test(testSentences, TestType.ALL);
 	}
 
 }

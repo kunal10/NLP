@@ -1,0 +1,50 @@
+                                README
+                                
+Instructions:
+
+1) Compilation:
+
+   cd path_to_LangauageModelling_folder
+   javac -d bin src/nlp/lm/*.java
+
+    This will generate .class files in LanguageModelling/bin
+
+2) Execution:
+
+    cd path_to_LangauageModelling_folder
+    
+    // To run Backward Bigram Model    
+    java -cp bin nlp.lm.BigramModel data/brown/ 0.1
+    
+    // NOTE : We are currently instantiating model type to backward in the 
+    // main method of BigramModel.java To test for forward model change it to
+    // FORWARD, recompile and execute.
+    
+    // To run Bidirectional Bigram Model
+    java -cp bin nlp.lm.BidirectionalBigramModel data/brown/ 0.1
+
+    This will run BidirectionalBigram Model on brown data set using 90% data for
+    training and 10% for testing.
+             
+Main Classes:
+
+1) BigramModel : Can be instantiated in FORWARD or BACKWARD mode to get 
+   appropriate model.  
+
+2) Bidirectional Bigram Model : Contains 2 Bigram Models (one for each mode) and
+   combines their result to yield a better result.
+   
+All the models can be tested in 3 modes :  ALL, SHORT, LONG representing the 
+sentences that are to be included in the testing set. We have used a sentence
+length threshold of 5 for classifying a sentence as short or long.
+
+NOTE : Currently both the models are hardcoded to test in ALL mode.
+
+TODOs : 
+
+- Add a flag for FORWARD, BACKWARD model instantiation in BigramModel.java so 
+  that this can be specified from command line.
+- Add a flag for test mode.
+- Add a train mode and a corresponding flag for it.
+- Add a flag for sentence length threshold.    
+ 

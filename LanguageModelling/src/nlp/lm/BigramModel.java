@@ -9,8 +9,14 @@ import java.util.*;
  */
 
 public class BigramModel {
-	
-	public enum ModelType { FORWARD, BACKWARD };
+
+	public enum ModelType {
+		FORWARD, BACKWARD
+	};
+
+	public enum TestType {
+		ALL, SHORT, LONG
+	};
 
 	/** Unigram model that maps a token to its unigram probability */
 	private Map<String, DoubleValue> unigramMap = null;
@@ -28,11 +34,11 @@ public class BigramModel {
 
 	/** Interpolation weight for bigram model */
 	private double lambda2 = 0.9;
-	
-	private ModelType modelType; 
-	
+
+	private ModelType modelType;
+
 	private String startToken;
-	
+
 	private String endToken;
 
 	/**
@@ -57,9 +63,8 @@ public class BigramModel {
 
 	/**
 	 * Train the model on a List of sentences represented as Lists of String
-	 * tokens.
-	 * NOTE : This function assumes that sentence does not contain start and 
-	 * end tokens in the list. 
+	 * tokens. NOTE : This function assumes that sentence does not contain start
+	 * and end tokens in the list.
 	 */
 	public void train(List<List<String>> sentences) {
 		// Accumulate unigram and bigram counts in maps
@@ -71,7 +76,7 @@ public class BigramModel {
 	/** Accumulate unigram and bigram counts for these sentences */
 	public void trainSentences(List<List<String>> sentences) {
 		for (List<String> sentence : sentences) {
-			List<String> orderedSentence = new ArrayList<String> (sentence);
+			List<String> orderedSentence = new ArrayList<String>(sentence);
 			if (modelType == ModelType.BACKWARD) {
 				Collections.reverse(orderedSentence);
 			}
@@ -80,9 +85,8 @@ public class BigramModel {
 	}
 
 	/**
-	 *  Accumulate unigram and bigram counts for this sentence 
-	 *  NOTE : This function assumes that sentence does not contain start and 
-	 *  end tokens. 
+	 * Accumulate unigram and bigram counts for this sentence NOTE : This
+	 * function assumes that sentence does not contain start and end tokens.
 	 */
 	public void trainSentence(List<String> sentence) {
 		// First count an initial start sentence token
@@ -215,13 +219,21 @@ public class BigramModel {
 	 * Use sentences as a test set to evaluate the model. Print out perplexity
 	 * of the model for this test data
 	 */
-	public void test(List<List<String>> sentences) {
+	public void test(List<List<String>> sentences, TestType testType) {
 		// Compute log probability of sentence to avoid underflow
 		double totalLogProb = 0;
 		// Keep count of total number of tokens predicted
 		double totalNumTokens = 0;
+		int kSentenceThreshold = 5;
 		// Accumulate log prob of all test sentences
 		for (List<String> sentence : sentences) {
+			if ((testType == TestType.SHORT && 
+					sentence.size() > kSentenceThreshold) || 
+				(testType == TestType.LONG && 
+					sentence.size() <= kSentenceThreshold)) {
+				// Ignore short/long sentences depending on test type.
+				continue;
+			}
 			// Num of tokens in sentence plus 1 for predicting </S>
 			totalNumTokens += sentence.size() + 1;
 			// Compute log prob of sentence
@@ -238,7 +250,7 @@ public class BigramModel {
 	/* Compute log probability of sentence given current model */
 	public double sentenceLogProb(List<String> sentence) {
 		// Reverse the order for backward model.
-		List<String> orderedSentence = new ArrayList<String> (sentence);
+		List<String> orderedSentence = new ArrayList<String>(sentence);
 		if (modelType == ModelType.BACKWARD) {
 			Collections.reverse(orderedSentence);
 		}
@@ -281,10 +293,18 @@ public class BigramModel {
 	 * Like test1 but excludes predicting end-of-sentence when computing
 	 * perplexity
 	 */
-	public void test2(List<List<String>> sentences) {
+	public void test2(List<List<String>> sentences, TestType testType) {
 		double totalLogProb = 0;
 		double totalNumTokens = 0;
+		int kSentenceThreshold = 5;
 		for (List<String> sentence : sentences) {
+			if ((testType == TestType.SHORT && 
+					sentence.size() > kSentenceThreshold) || 
+				(testType == TestType.LONG && 
+					sentence.size() <= kSentenceThreshold)) {
+				// Ignore short/long sentences depending on test type.
+				continue;
+			}
 			totalNumTokens += sentence.size();
 			double sentenceLogProb = sentenceLogProb2(sentence);
 			// System.out.println(sentenceLogProb + " : " + sentence);
@@ -302,7 +322,7 @@ public class BigramModel {
 		String prevToken = startToken;
 		double sentenceLogProb = 0;
 		// Reverse the order for backward model.
-		List<String> orderedSentence = new ArrayList<String> (sentence);
+		List<String> orderedSentence = new ArrayList<String>(sentence);
 		if (modelType == ModelType.BACKWARD) {
 			Collections.reverse(orderedSentence);
 		}
@@ -334,13 +354,13 @@ public class BigramModel {
 		String prevToken = startToken;
 		// Vector for storing token prediction probs
 		double[] tokenProbs = new double[sentence.size()];
-		
+
 		// Reverse the order for backward model.
-		List<String> orderedSentence = new ArrayList<String> (sentence);
+		List<String> orderedSentence = new ArrayList<String>(sentence);
 		if (modelType == ModelType.BACKWARD) {
 			Collections.reverse(orderedSentence);
 		}
-		
+
 		// Token counter
 		int i = 0;
 		// Compute prob of predicting each token in sentence
@@ -357,14 +377,14 @@ public class BigramModel {
 			prevToken = token;
 			i++;
 		}
-		
-//		// Check prediction of end of sentence. 
-//		// Not required for bidirectional model.
-//		DoubleValue unigramVal = unigramMap.get(endToken);
-//		String bigram = bigram(prevToken, endToken);
-//		DoubleValue bigramVal = bigramMap.get(bigram);
-//		// Store end of sentence prediction prob
-//		tokenProbs[i] = interpolatedProb(unigramVal, bigramVal);
+
+		// // Check prediction of end of sentence.
+		// // Not required for bidirectional model.
+		// DoubleValue unigramVal = unigramMap.get(endToken);
+		// String bigram = bigram(prevToken, endToken);
+		// DoubleValue bigramVal = bigramMap.get(bigram);
+		// // Store end of sentence prediction prob
+		// tokenProbs[i] = interpolatedProb(unigramVal, bigramVal);
 		return tokenProbs;
 	}
 
@@ -400,7 +420,7 @@ public class BigramModel {
 		File[] files = new File[args.length - 1];
 		for (int i = 0; i < files.length; i++)
 			files[i] = new File(args[i]);
-		
+
 		// Last arg is the TestFrac
 		double testFraction = Double.valueOf(args[args.length - 1]);
 		// Get list of sentences from the LDC POS tagged input files
@@ -414,24 +434,24 @@ public class BigramModel {
 		// Take training sentences from start of data
 		List<List<String>> trainSentences = sentences.subList(0,
 				numSentences - numTest);
-		
+
 		// Print Stats.
 		System.out.println("# Train Sentences = " + trainSentences.size()
 				+ " (# words = " + wordCount(trainSentences)
 				+ ") \n# Test Sentences = " + testSentences.size()
 				+ " (# words = " + wordCount(testSentences) + ")");
-		
+
 		// Create a bigram model and train it.
 		BigramModel model = new BigramModel(ModelType.BACKWARD);
 		System.out.println("Training...");
 		model.train(trainSentences);
 		// Test on training data using test and test2
-		model.test(trainSentences);
-		model.test2(trainSentences);
+		model.test(trainSentences, TestType.ALL);
+		model.test2(trainSentences, TestType.ALL);
 		System.out.println("Testing...");
 		// Test on test data using test and test2
-		model.test(testSentences);
-		model.test2(testSentences);
+		model.test(testSentences, TestType.ALL);
+		model.test2(testSentences, TestType.ALL);
 	}
 
 }
