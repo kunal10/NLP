@@ -1,0 +1,40 @@
+                                README
+                                
+Instructions:
+
+1) Parser:
+
+   cd path_to_POSTagging
+   javac -d bin src/*.java
+   
+   # Without Orthographic Features
+   java -cp bin POSTaggedFile ../data/atis/input_file ../results/atis/output_file.txt false 
+   # With Orthographic Features  
+   java -cp bin POSTaggedFile ../data/atis/input_file ../results/atis/output_file.txt false 
+   
+   NOTE : For wsj specify input_dir instead of input_file.
+
+2) HMMSimpleTagger:
+
+3) SimpleTagger:
+
+
+
+    cd path_to_LangauageModelling_folder
+    
+    // To run Backward Bigram Model    
+    java -cp bin nlp.lm.BigramModel data/brown/ 0.1
+    
+    // NOTE : We are currently instantiating model type to backward in the 
+    // main method of BigramModel.java To test for forward model change it to
+    // FORWARD, recompile and execute.
+    
+    // To run Bidirectional Bigram Model
+    java -cp bin nlp.lm.BidirectionalBigramModel data/brown/ 0.1
+
+    This will run BidirectionalBigram Model on brown data set using 90% data for
+    training and 10% for testing.
+             
+4) Data Dir : POSTagging/data
+
+5) Results Dir : POSTagging/results
