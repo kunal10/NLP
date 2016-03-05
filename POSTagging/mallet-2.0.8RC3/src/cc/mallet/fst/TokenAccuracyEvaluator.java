@@ -104,12 +104,14 @@ public class TokenAccuracyEvaluator extends TransducerEvaluator {
 		}
 		double acc = ((double) numCorrectTokens) / totalTokens;
 		double oovAcc = ((double) numCorrectOovTokens) / totalOovTokens;
+		double percentOovTokens = (double) (totalOovTokens/totalTokens);
 		// System.err.println ("TokenAccuracyEvaluator accuracy="+acc);
 		String oovDescription = "oov" + description;
 		accuracy.put(description, acc);
 		oovAccuracy.put(oovDescription, acc);
 		logger.info(description + " accuracy=" + acc);
 		logger.info(oovDescription + " oov accuracy=" + oovAcc);
+		logger.info(oovDescription + " Percent of oov tokens=" + percentOovTokens);
 	}
 
 	/**
@@ -145,7 +147,7 @@ public class TokenAccuracyEvaluator extends TransducerEvaluator {
 		for (int i = 0; i < trainingData.size(); i++) {
 			Instance instance = trainingData.get(i);
 			@SuppressWarnings("rawtypes")
-			Sequence input = (Sequence) instance.getData(); 
+			Sequence input = (Sequence) instance.getData();
 			for (int j = 0; j < input.size(); j++) {
 				String token = input.get(j).toString();
 				if (!vocab.contains(token)) {

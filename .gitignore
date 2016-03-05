@@ -17,6 +17,9 @@ local.properties
 # Text files.
 *.txt 
 
+# Results
+POSTagging/results*
+
 # Generated files
 *.ans
 .DS_Store
