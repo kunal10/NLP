@@ -1,0 +1,20 @@
+verse = vanilla
+environment = CLASSPATH=/u/klad/Workspace/NLP/POSTagging/mallet-2.0.8RC3/class:/u/klad/Workspace/NLP/POSTagging/mallet-2.0.8RC3/lib/mallet-deps.jar
+
+Initialdir = /u/klad/Workspace/NLP/POSTagging/
+Executable = /usr/bin/java
+
++Group   = "GRAD"
++Project = "INSTRUCTIONAL"
++ProjectDescription = "CS388 Homework 2"
+
+
+Notification = complete
+Notify_user = klad@cs.utexas.edu
+
+Arguments = cc.mallet.fst.SimpleTagger --train true --model-file /u/klad/Workspace/NLP/POSTagging/results/wsj/crf/simple/model0to3 --training-proportion 1 --test lab /u/klad/Workspace/NLP/POSTagging/results/wsj/wsj0to1.txt /u/klad/Workspace/NLP/POSTagging/results/wsj/wsj2to3.txt
+
+Log = /u/klad/Workspace/NLP/POSTagging/trace/wsj/crf/simple/modelwsj0to3.log
+Output =  /u/klad/Workspace/NLP/POSTagging/trace/wsj/crf/simple/modelwsj0to3.out
+Error  =  /u/klad/Workspace/NLP/POSTagging/trace/wsj/crf/simple/modelwsj0to3trace.txt
+Queue 1

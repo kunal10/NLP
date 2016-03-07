@@ -104,7 +104,7 @@ public class TokenAccuracyEvaluator extends TransducerEvaluator {
 		}
 		double acc = ((double) numCorrectTokens) / totalTokens;
 		double oovAcc = ((double) numCorrectOovTokens) / totalOovTokens;
-		double percentOovTokens = (double) (totalOovTokens/totalTokens);
+		double percentOovTokens = ((double) totalOovTokens) /totalTokens;
 		// System.err.println ("TokenAccuracyEvaluator accuracy="+acc);
 		String oovDescription = "oov" + description;
 		accuracy.put(description, acc);
