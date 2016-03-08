@@ -4,7 +4,7 @@ Instructions:
 
 1) Parser:
 
-   cd path_to_POSTagging
+   cd POSTagging/Parser
    javac -d bin src/*.java
    
    # Without Orthographic Features
