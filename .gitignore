@@ -14,6 +14,13 @@ local.properties
 *Log*
 !*Log*.java
 
+# jar files
+*.jar
+
+# Zip files and Tab balls
+*.zip
+*.tar.gz
+
 # Text files.
 *.txt 
 
