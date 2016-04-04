@@ -81,14 +81,20 @@ public class UnsupervisedDomainAdaptationDemo {
 		}
 
 		int numSentences = fullSeedTreebank.size();
-		// Select seedSize sentences randomly from entire seed set.
-		List<Integer> indices = new ArrayList<>();
-		for (int i = 0; i < numSentences; i++) {
-			indices.add(i);
-		}
-		Collections.shuffle(indices);
-		for (int i = 0; i < seedSize; i++) {
-			trainTreebank.add(fullSeedTreebank.get(i));
+		if (seedSize < 0) {
+			for (int i = 0; i < numSentences; i++) {
+				trainTreebank.add(fullSeedTreebank.get(i));
+			}
+		} else {
+			// Add first seedSize sentences.
+			List<Integer> indices = new ArrayList<>();
+			for (int i = 0; i < numSentences; i++) {
+				indices.add(i);
+			}
+			Collections.shuffle(indices);
+			for (int i = 0; i < seedSize; i++) {
+				trainTreebank.add(fullSeedTreebank.get(i));
+			}
 		}
 	}
 
@@ -117,14 +123,20 @@ public class UnsupervisedDomainAdaptationDemo {
 		}
 
 		int numSentences = fullSelfTrainTreebank.size();
-		// Select seedSize sentences randomly from entire seed set.
-		List<Integer> indices = new ArrayList<>();
-		for (int i = 0; i < numSentences; i++) {
-			indices.add(i);
-		}
-		Collections.shuffle(indices);
-		for (int i = 0; i < selfTrainSize; i++) {
-			selfTrainTreebank.add(fullSelfTrainTreebank.get(i));
+		if (selfTrainSize < 0) {
+			for (int i = 0; i < numSentences; i++) {
+				selfTrainTreebank.add(fullSelfTrainTreebank.get(i));
+			}
+		} else {
+			// Select seedSize sentences randomly from entire seed set.
+			List<Integer> indices = new ArrayList<>();
+			for (int i = 0; i < numSentences; i++) {
+				indices.add(i);
+			}
+			Collections.shuffle(indices);
+			for (int i = 0; i < selfTrainSize; i++) {
+				selfTrainTreebank.add(fullSelfTrainTreebank.get(i));
+			}
 		}
 	}
 
