@@ -21,6 +21,11 @@ local.properties
 *.zip
 *.tar.gz
 
+# Ignore log, output and error files
+*.err
+*.out
+*.log
+
 # Text files.
 *.txt 
 

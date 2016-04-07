@@ -1,0 +1,91 @@
+verse = vanilla
+environment = CLASSPATH=/u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/stanford-parser.jar:/u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/slf4j-api.jar:/u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/:
+
+Initialdir = /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/
+Executable = /usr/bin/java
+
++Group   = "GRAD"
++Project = "INSTRUCTIONAL"
++ProjectDescription = "CS388 Homework 3"
+
+
+Notification = complete
+Notify_user = klad@cs.utexas.edu
+
+Arguments = UnsupervisedDomainAdaptationDemo /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/brown 10000 /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/wsjTrain 1000 /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/wsjTest  
+Log = /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/logs/brownseedWsjSelfTrain1000.log
+Output =  /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/out/brownseedWsjSelfTrain1000.out
+Error  =  /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/error/brownseedWsjSelfTrain1000.err
+Queue 1
+
+Arguments = UnsupervisedDomainAdaptationDemo /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/brown 10000 /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/wsjTrain 2000 /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/wsjTest  
+Log = /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/logs/brownseedWsjSelfTrain2000.log 
+Output =  /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/out/brownseedWsjSelfTrain2000.out
+Error  =  /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/error/brownseedWsjSelfTrain2000.err
+Queue 1
+
+Arguments = UnsupervisedDomainAdaptationDemo /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/brown 10000 /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/wsjTrain 3000 /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/wsjTest  
+Log = /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/logs/brownseedWsjSelfTrain3000.log 
+Output =  /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/out/brownseedWsjSelfTrain3000.out
+Error  =  /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/error/brownseedWsjSelfTrain3000.err
+Queue 1
+
+Arguments = UnsupervisedDomainAdaptationDemo /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/brown 10000 /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/wsjTrain 4000 /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/wsjTest  
+Log = /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/logs/brownseedWsjSelfTrain4000.log 
+Output =  /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/out/brownseedWsjSelfTrain4000.out
+Error  =  /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/error/brownseedWsjSelfTrain4000.err
+Queue 1
+
+Arguments = UnsupervisedDomainAdaptationDemo /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/brown 10000 /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/wsjTrain 5000 /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/wsjTest  
+Log = /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/logs/brownseedWsjSelfTrain5000.log 
+Output =  /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/out/brownseedWsjSelfTrain5000.out
+Error  =  /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/error/brownseedWsjSelfTrain5000.err
+Queue 1
+
+Arguments = UnsupervisedDomainAdaptationDemo /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/brown 10000 /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/wsjTrain 7000 /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/wsjTest  
+Log = /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/logs/brownseedWsjSelfTrain7000.log 
+Output =  /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/out/brownseedWsjSelfTrain7000.out
+Error  =  /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/error/brownseedWsjSelfTrain7000.err
+Queue 1
+
+Arguments = UnsupervisedDomainAdaptationDemo /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/brown 10000 /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/wsjTrain 10000 /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/wsjTest  
+Log = /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/logs/brownseedWsjSelfTrain10000.log 
+Output =  /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/out/brownseedWsjSelfTrain10000.out
+Error  =  /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/error/brownseedWsjSelfTrain10000.err
+Queue 1
+
+Arguments = UnsupervisedDomainAdaptationDemo /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/brown 10000 /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/wsjTrain 13000 /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/wsjTest  
+Log = /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/logs/brownseedWsjSelfTrain13000.log 
+Output =  /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/out/brownseedWsjSelfTrain13000.out
+Error  =  /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/error/brownseedWsjSelfTrain13000.err
+Queue 1
+
+Arguments = UnsupervisedDomainAdaptationDemo /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/brown 10000 /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/wsjTrain 16000 /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/wsjTest  
+Log = /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/logs/brownseedWsjSelfTrain16000.log 
+Output =  /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/out/brownseedWsjSelfTrain16000.out
+Error  =  /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/error/brownseedWsjSelfTrain16000.err
+Queue 1
+
+Arguments = UnsupervisedDomainAdaptationDemo /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/brown 10000 /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/wsjTrain 20000 /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/wsjTest  
+Log = /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/logs/brownseedWsjSelfTrain20000.log 
+Output =  /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/out/brownseedWsjSelfTrain20000.out
+Error  =  /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/error/brownseedWsjSelfTrain20000.err
+Queue 1
+
+Arguments = UnsupervisedDomainAdaptationDemo /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/brown 10000 /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/wsjTrain 25000 /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/wsjTest  
+Log = /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/logs/brownseedWsjSelfTrain25000.log 
+Output =  /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/out/brownseedWsjSelfTrain25000.out
+Error  =  /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/error/brownseedWsjSelfTrain25000.err
+Queue 1
+
+Arguments = UnsupervisedDomainAdaptationDemo /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/brown 10000 /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/wsjTrain 30000 /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/wsjTest  
+Log = /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/logs/brownseedWsjSelfTrain30000.log 
+Output =  /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/out/brownseedWsjSelfTrain30000.out
+Error  =  /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/error/brownseedWsjSelfTrain30000.err
+Queue 1
+
+Arguments = UnsupervisedDomainAdaptationDemo /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/brown 10000 /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/wsjTrain 35000 /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/data/wsjTest  
+Log = /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/logs/brownseedWsjSelfTrain35000.log 
+Output =  /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/out/brownseedWsjSelfTrain35000.out
+Error  =  /u/klad/Workspace/NLP/StatisticalParsing/stanford-parser-full-2015-12-09/error/brownseedWsjSelfTrain35000.err
+Queue 1
